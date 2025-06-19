@@ -16,7 +16,6 @@ df = pd.read_excel(file_path, sheet_name='Sheet1')
 plt.rcParams['font.family'] = ['Arial Unicode MS', 'Heiti TC', 'PingFang SC', 'STHeiti']
 plt.rcParams['font.sans-serif'] = plt.rcParams['font.family']
 
-
 fig, ax1 = plt.subplots(1, 1, figsize=(8, 6))
 
 # 过滤掉 NaN 值
@@ -43,7 +42,7 @@ ax1.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
 plt.tight_layout()
 
 # 保存图片到本地（支持 PNG、PDF、SVG、JPG 等格式）
-output_path = "output/" + name + '.png'  # 可以修改路径和文件名
+output_path = "output/fct_" + name + '.png'  # 可以修改路径和文件名
 plt.savefig(output_path, dpi=300, bbox_inches='tight')  # dpi 控制分辨率，bbox_inches='tight' 防止裁剪
 print(f"图片已保存至：{output_path}")
 
