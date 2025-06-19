@@ -8,7 +8,7 @@ from matplotlib.ticker import ScalarFormatter
 import seaborn as sns
 
 # 从Excel文件读取数据
-name = '30p'
+name = 'lowar'
 file_path = 'data/' + name + '.xlsx'  # 请确保文件路径正确
 df = pd.read_excel(file_path, sheet_name='Sheet1')
 
@@ -22,7 +22,7 @@ fig, ax1 = plt.subplots(1, 1, figsize=(8, 6))
 for algo in [a for a in df['算法选择'].unique() if pd.notna(a)]:
     if algo != '无损网络':
         subset = df[df['算法选择'] == algo]
-        ax1.plot(subset['丢包率'], subset['平均FCT (ns)'], 'o-', label=algo)
+        ax1.plot(subset['丢包率'], subset['FCT'], 'o-', label=algo)
 
 ax1.set_xscale('log')
 ax1.set_xlabel('丢包率 (log scale)')
