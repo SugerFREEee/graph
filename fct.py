@@ -8,10 +8,10 @@ from matplotlib.ticker import ScalarFormatter
 import seaborn as sns
 
 # 从Excel文件读取数据
-name = 'lowar'
+name = 'ablation'
 file_path = 'data/' + name + '.xlsx'  # 请确保文件路径正确
 df = pd.read_excel(file_path, sheet_name='Sheet1')
-
+print(df)
 # 设置图形风格和字体
 plt.rcParams['font.family'] = ['Arial Unicode MS', 'Heiti TC', 'PingFang SC', 'STHeiti']
 plt.rcParams['font.sans-serif'] = plt.rcParams['font.family']
@@ -22,12 +22,12 @@ fig, ax1 = plt.subplots(1, 1, figsize=(8, 6))
 for algo in [a for a in df['算法选择'].unique() if pd.notna(a)]:
     if algo != '无损网络':
         subset = df[df['算法选择'] == algo]
-        ax1.plot(subset['丢包率'], subset['FCT'], 'o-', label=algo)
+        ax1.plot(subset['丢包率'], subset['FCT(ns)'], 'o-', label=algo)
 
 ax1.set_xscale('log')
-ax1.set_xlabel('丢包率 (log scale)')
-ax1.set_ylabel('平均FCT (ns)')
-ax1.set_title('不同算法在不同丢包率下的FCT对比')
+ax1.set_xlabel('Packet drop rate')
+ax1.set_ylabel('Average FCT (ns)')
+# ax1.set_title('不同算法在不同丢包率下的FCT对比')
 ax1.legend()
 ax1.grid(True, which="both", ls="--")
 
