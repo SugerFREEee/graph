@@ -16,6 +16,14 @@ df['吞吐量下降百分比'] = (1 - df['相较于无损网络']) * 100
 plt.rcParams['font.family'] = ['Arial Unicode MS', 'Heiti TC', 'PingFang SC', 'STHeiti']
 plt.rcParams['font.sans-serif'] = plt.rcParams['font.family']
 
+font = 24
+
+# 设置全局字体大小
+plt.rcParams['axes.labelsize'] = font  # 坐标轴标签字体大小
+plt.rcParams['xtick.labelsize'] = font  # x轴刻度标签字体大小
+plt.rcParams['ytick.labelsize'] = font  # y轴刻度标签字体大小
+plt.rcParams['legend.fontsize'] = font  # 图例字体大小
+
 # 创建图形
 fig, ax2 = plt.subplots(figsize=(8, 6))
 
@@ -27,8 +35,8 @@ for algo in df['算法选择'].unique():
             ax2.plot(subset['丢包率'], subset['吞吐量(B/ns)'], 'o-', label=algo)
 ax2.axhline(y=lossless_throughput, color='r', linestyle='--', label='Lossless network')
 ax2.set_xscale('log')
-ax2.set_xlabel('Packet drop rate')
-ax2.set_ylabel('Throughput (B/ns)')
+ax2.set_xlabel('Loss rate', fontsize=font)
+ax2.set_ylabel('Throughput (B/ns)', fontsize=font)
 ax2.legend()
 ax2.grid(True, which="both", ls="--")
 

@@ -4,7 +4,6 @@ import numpy as np
 from matplotlib import rcParams
 import matplotlib
 from matplotlib.ticker import ScalarFormatter
-
 import seaborn as sns
 
 # 从Excel文件读取数据
@@ -16,6 +15,14 @@ print(df)
 plt.rcParams['font.family'] = ['Arial Unicode MS', 'Heiti TC', 'PingFang SC', 'STHeiti']
 plt.rcParams['font.sans-serif'] = plt.rcParams['font.family']
 
+font = 16
+
+# 设置全局字体大小
+plt.rcParams['axes.labelsize'] = font  # 坐标轴标签字体大小
+plt.rcParams['xtick.labelsize'] = font  # x轴刻度标签字体大小
+plt.rcParams['ytick.labelsize'] = font  # y轴刻度标签字体大小
+plt.rcParams['legend.fontsize'] = font  # 图例字体大小
+
 fig, ax1 = plt.subplots(1, 1, figsize=(8, 6))
 
 # 过滤掉 NaN 值
@@ -25,10 +32,10 @@ for algo in [a for a in df['算法选择'].unique() if pd.notna(a)]:
         ax1.plot(subset['丢包率'], subset['FCT(ns)'], 'o-', label=algo)
 
 ax1.set_xscale('log')
-ax1.set_xlabel('Packet drop rate')
-ax1.set_ylabel('Average FCT (ns)')
+ax1.set_xlabel('Loss rate', fontsize=font)  # 可以单独设置x轴标签大小
+ax1.set_ylabel('Average FCT (ns)', fontsize=font)  # 可以单独设置y轴标签大小
 # ax1.set_title('不同算法在不同丢包率下的FCT对比')
-ax1.legend()
+ax1.legend(fontsize=font)  # 也可以在这里单独设置图例大小
 ax1.grid(True, which="both", ls="--")
 
 # 设置纵坐标为科学计数法
