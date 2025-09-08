@@ -7,7 +7,7 @@ from matplotlib.ticker import ScalarFormatter
 import seaborn as sns
 
 # 从Excel文件读取数据
-name = 'ablation'
+name = 'ablation'  # 请根据需要修改文件名
 file_path = 'data/' + name + '.xlsx'  # 请确保文件路径正确
 df = pd.read_excel(file_path, sheet_name='Sheet1')
 print(df)
@@ -15,7 +15,7 @@ print(df)
 plt.rcParams['font.family'] = ['Arial Unicode MS', 'Heiti TC', 'PingFang SC', 'STHeiti']
 plt.rcParams['font.sans-serif'] = plt.rcParams['font.family']
 
-font = 16
+font = 24
 
 # 设置全局字体大小
 plt.rcParams['axes.labelsize'] = font  # 坐标轴标签字体大小
